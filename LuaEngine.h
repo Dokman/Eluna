@@ -64,6 +64,7 @@ class Guild;
 class Group;
 #if defined(TRINITY) || AZEROTHCORE
 class InstanceScript;
+class InstanceMap;
 typedef InstanceScript InstanceData;
 #else
 class InstanceData;
@@ -297,13 +298,13 @@ public:
     /*
      * Returns `true` if Eluna has instance data for `map`.
      */
-    bool HasInstanceData(Map const* map);
+    bool HasInstanceData(InstanceMap const* map);
 
     /*
      * Use the top element of the stack as the instance data table for `map`,
      *   then pops it off the stack.
      */
-    void CreateInstanceData(Map const* map);
+    void CreateInstanceData(InstanceMap const* map);
 
     /*
      * Retrieve the instance data for the `Map` scripted by `ai` and push it
@@ -338,7 +339,7 @@ public:
     static ElunaObject* CHECKTYPE(lua_State* luastate, int narg, const char *tname, bool error = true);
 
     CreatureAI* GetAI(Creature* creature);
-    InstanceData* GetInstanceData(Map* map);
+    InstanceData* GetInstanceData(InstanceMap* map);
     void FreeInstanceId(uint32 instanceId);
 
     /* Custom */
